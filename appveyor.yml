@@ -1,0 +1,25 @@
+# Inspired by https://github.com/GitbookIO/gitbook/blob/master/appveyor.yml
+# Fix line endings in Windows. (runs before repo cloning)
+init:
+  - git config --global core.autocrlf input
+
+# Test against these versions of Node.js
+environment:
+  matrix:
+    - nodejs_version: '0.10'
+    - nodejs_version: '0.12'
+
+# Install scripts
+install:
+  # Get the latest version of Node.js
+  - ps: Install-Product node $env:nodejs_version
+  # install modules
+  - npm install
+
+# Post-install test scripts
+test_script:
+  # output useful info
+  - node --version
+  - npm --version
+  # run tests
+  - npm test
