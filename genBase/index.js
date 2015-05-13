@@ -103,7 +103,8 @@ Generator.prototype.askForModuleName = function askForModuleName(params) {
         return utils.normalizeModulePath(module) + '/' +
           ((this.options.structure === 'module-type' ||
             this.config.get('structure') === 'module-type') ? 'views/' : '') +
-          utils.hyphenName(this.name.replace('.', '-')) + '.tpl.html';
+          //utils.hyphenName(this.name.replace('.', '-')) + '.tpl.html';
+          utils.hyphenName(this.name.replace('.', '.')) + '.tpl.html';
       }.bind(this),
       when: function () {
         return params && params.templateUrl && !(this.options && this.options['template-url']);
@@ -212,7 +213,9 @@ Generator.prototype.copyFile = function copyFile(type, component, dest, context)
       (component !== 'module' && context.structure === 'module-type') ? pluralComponent : '');
 
     // create file name
-    fileName = context.hyphenName + '-' + component;
+    //fileName = context.hyphenName + '-' + component;
+    fileName = context.hyphenName + '.' + component;
+
     if (type === 'markup') {
       fileName += '.tpl.' + context.markup;
     }

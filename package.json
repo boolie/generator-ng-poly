@@ -42,7 +42,8 @@
     "jasmine",
     "mocha",
     "protractor",
-    "polymer"
+    "polymer",
+    "less"
   ],
   "dependencies": {
     "chalk": "^1.0.0",
